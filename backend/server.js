@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import todosRoutes from "./routes/todos.js";
 
 dotenv.config();
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 8020;
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(PORT, () => {
-  connectDB();
   console.log(`Server started at http://localhost:${PORT}`);
 });
+
+export default app;
