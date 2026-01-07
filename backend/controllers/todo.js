@@ -34,7 +34,6 @@ export const createTodo = async (req, res) => {
   } catch (err) {
     console.error(`Error: ${err.message}`);
     res.status(500).json({ success: false, message: `Server Error` });
-    process.exit(1); // 1 = failure, 0 = success
   }
 };
 
