@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon backend/server",
-    "build": "yarn install && yarn install --cwd frontend && yarn run build --cwd frontend",
+    "build": "yarn install && cd frontend && yarn install && yarn build",
     "start": "NODE_ENV=production node backend/server.js"
   },
   "type": "module",
