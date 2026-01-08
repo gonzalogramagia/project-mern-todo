@@ -7,6 +7,9 @@ import {
   Input,
   Button,
   useToast,
+  Text,
+  Link,
+  Image,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -49,11 +52,17 @@ const CreatePage = () => {
 
   return (
     <>
-      <Container maxW="container.sm">
+      <Container maxW="container.sm" py={12}>
         <VStack spacing={8}>
-          <Heading as={"h1"} size={"2xl"} textAlign={"center"} mb={8}>
-            Create New Task
-          </Heading>
+          <Text
+            fontSize={"30"}
+            fontWeight={"bold"}
+            bgGradient={"linear(to-r, cyan.400, blue.500)"}
+            bgClip={"text"}
+            textAlign={"center"}
+          >
+            ✍ Create New Task
+          </Text>
           <Box
             w={"full"}
             bg={useColorModeValue("white", "gray.800")}
@@ -86,6 +95,29 @@ const CreatePage = () => {
                   setNewTask({ ...newTask, image: e.target.value })
                 }
               />
+              <Text fontSize="sm" color="gray.500">
+                Visit{" "}
+                <Link href="https://unsplash.com/" isExternal color="blue.500">
+                  Unsplash
+                </Link>
+                , right-click an image and select "Copy Image Address".
+              </Text>
+              {newTask.image && newTask.image.includes("unsplash.com/photos/") && (
+                <Text fontSize="xs" color="red.500">
+                  Warning: This looks like a page URL, not an image URL.
+                </Text>
+              )}
+              {newTask.image && newTask.image.startsWith("http") && (
+                <Image
+                  src={newTask.image}
+                  alt="Preview"
+                  borderRadius="md"
+                  objectFit="cover"
+                  maxH="200px"
+                  w="full"
+                  fallbackSrc="https://via.placeholder.com/150"
+                />
+              )}
               <Button colorScheme="blue" onClick={handleAddProduct} w="full">
                 Add Task
               </Button>

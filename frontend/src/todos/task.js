@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export const useTaskTodos = create((set) => ({
   tasks: [],
+  loading: false,
   setTasks: (tasks) => set({ tasks }),
   createTask: async (newTask) => {
     if (!newTask.title) {
@@ -29,15 +30,17 @@ export const useTaskTodos = create((set) => ({
     }
   },
   fetchTasks: async () => {
+    set({ loading: true });
     try {
       const res = await fetch("/api/todos");
       if (!res.ok) {
         throw new Error("Failed to fetch tasks");
       }
       const data = await res.json();
-      set({ tasks: data.data });
+      set({ tasks: data.data, loading: false });
       return { success: true, message: "Tasks fetched" };
     } catch (err) {
+      set({ loading: false });
       return { success: false, message: err.message };
     }
   },
