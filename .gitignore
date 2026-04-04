@@ -1,2 +1,30 @@
+# Dependencies
 /node_modules
+/.pnp
+.pnp.js
+
+# Build Output
+/dist
+/frontend/dist
+
+# Environment Variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Vercel Related
+.vercel
