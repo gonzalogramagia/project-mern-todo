@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
+import cors from "cors";
 import { connectDB } from "./config/db.js";
 import todosRoutes from "./routes/todos.js";
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8020;
 
 const __dirname = path.resolve();
 
+app.use(cors());
 app.use(express.json()); // allow us to accept JSON data in the req.body
 
 app.use("/api/todos", todosRoutes);

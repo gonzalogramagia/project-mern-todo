@@ -28,6 +28,12 @@ This project was developed as part of a [FreeCodeCamp](https://www.freecodecamp.
 - [Mongoose](https://mongoosejs.com/) (ODM)
 - [Dotenv](https://www.npmjs.com/package/dotenv) (Environment Management)
 
+## 🌐 Deployment
+
+- **Frontend:** Hosted on [GitHub Pages](https://pages.github.com/).
+- **Backend:** Hosted on [Render](https://render.com/).
+- **CI/CD:** Automated deployments using GitHub Actions.
+
 ---
 
 Made with 💛 by [Gonza](https://github.com/gonzalogramagia)
