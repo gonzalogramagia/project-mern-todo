@@ -37,6 +37,10 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
+      - name: Create 404.html and .nojekyll
+        run: |
+          cp frontend/dist/index.html frontend/dist/404.html
+          touch frontend/dist/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

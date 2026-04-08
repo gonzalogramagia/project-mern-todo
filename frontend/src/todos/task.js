@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api";
+
 export const useTaskTodos = create((set) => ({
   tasks: [],
   loading: false,
@@ -10,7 +12,7 @@ export const useTaskTodos = create((set) => ({
     }
 
     try {
-      const res = await fetch("/api/todos", {
+      const res = await fetch(`${API_URL}/todos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +34,7 @@ export const useTaskTodos = create((set) => ({
   fetchTasks: async () => {
     set({ loading: true });
     try {
-      const res = await fetch("/api/todos");
+      const res = await fetch(`${API_URL}/todos`);
       if (!res.ok) {
         throw new Error("Failed to fetch tasks");
       }
@@ -46,7 +48,7 @@ export const useTaskTodos = create((set) => ({
   },
   deleteTask: async (tid) => {
     try {
-      const res = await fetch(`/api/todos/${tid}`, {
+      const res = await fetch(`${API_URL}/todos/${tid}`, {
         method: "DELETE",
       });
       if (!res.ok) {
@@ -65,7 +67,7 @@ export const useTaskTodos = create((set) => ({
   },
   updateTask: async (tid, updatedTask) => {
     try {
-      const res = await fetch(`/api/todos/${tid}`, {
+      const res = await fetch(`${API_URL}/todos/${tid}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
